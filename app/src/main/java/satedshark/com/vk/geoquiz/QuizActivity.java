@@ -10,16 +10,24 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
+    //region KEY
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
     private static final String KEY_BUTTON_ACTIVE = "buttonActive";
     private static final String KEY_RIGHT_ANSWER = "rightAnswer";
+    //endregion
 
+    //region Variables
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
     private TextView mQuestionTextView;
+    private int mCurrentIndex = 0;
+    private int mRightAnswer = 0;
+    private boolean mButtonActive = true;
+    //endregion
 
+    //region mQuestionBank
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_australia, true),
             new Question(R.string.question_oceans, true),
@@ -28,9 +36,7 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_americas, true),
             new Question(R.string.question_asia, true)
     };
-    private int mCurrentIndex = 0;
-    private int mRightAnswer = 0;
-    private boolean mButtonActive = true;
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,7 @@ public class QuizActivity extends AppCompatActivity {
             mRightAnswer = savedInstanceState.getInt(KEY_RIGHT_ANSWER, 0);
         }
 
-        mQuestionTextView = findViewById(R.id.question_text_view);
+//        mQuestionTextView = findViewById(R.id.question_text_view);
 
         mTrueButton = findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
